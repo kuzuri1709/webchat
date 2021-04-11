@@ -10,16 +10,75 @@
 </head>
 
 <body>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
+
+    <!-- include firebase database -->
+    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-database.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+         https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-analytics.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        var firebaseConfig = {
+            apiKey: "AIzaSyCOsWXmgZ7QmekmbFKNB7et6QbSoXfiQqs",
+            authDomain: "webchat-44928.firebaseapp.com",
+            projectId: "webchat-44928",
+            storageBucket: "webchat-44928.appspot.com",
+            messagingSenderId: "58587984553",
+            appId: "1:58587984553:web:febf003ccfd6807f0d6fb8",
+            measurementId: "G-8NE9M7G87B"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+
+        function sendUserInfo() {
+            var email
+            var username
+            var password
+            var submit = document.getElementById("submit-btn");
+            function User(email, password, username) {
+                this.email = email
+                this.password = password
+                this.username = username
+            }
+            var user
+            function getUserInfo() {
+                email = document.getElementById("email").value;
+                username = document.getElementById("username").value;
+                password = document.getElementById("pwd").value;
+                return user = new User(email, password, username)
+            }
+            getUserInfo()
+            //save in database
+            firebase.database().ref("users").push().set({
+                "username": user.username,
+                "email": user.email,
+                "password": user.password,
+            });
+
+            //prevent form from submitting
+            return false;
+        }
+
+
+    </script>
+
     <div id="register-box">
-        <form id="register-form" action="#">
+        <form id="register-form" action="#" onsubmit="return sendUserInfo()">
             <label for="email">Email: <input id="email" type="email" placeholder="Email"></label>
             <label for="pwd">Password: <input id="pwd" type="password" placeholder="Password"></label>
             <label for="username">Username: <input id="username" type="text" placeholder="Username"></label>
-            <input type="submit">
+            <input id="submit-btn" type="submit" onsubmit="return">
         </form>
     </div>
 
-    <script src=".//register.js"></script>
+    <script src="./register.js"></script>
 </body>
 
 </html>
