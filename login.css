@@ -1,0 +1,13 @@
+#login-box{
+    height: 300px;
+    width: 500px;
+    background-color: gray;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#login-form{
+    display: flex;
+    flex-direction: column;
+    
+}
