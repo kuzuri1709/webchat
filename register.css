@@ -1,0 +1,13 @@
+#register-box{
+    height: 300px;
+    width: 500px;
+    background-color: gray;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#register-form{
+    display: flex;
+    flex-direction: column;
+    
+}
