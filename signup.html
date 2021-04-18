@@ -70,12 +70,29 @@
     </script>
 
     <div id="register-box">
-        <form id="register-form" action="#" onsubmit="return sendUserInfo()">
-            <label for="email">Email: <input id="email" type="email" placeholder="Email"></label>
-            <label for="pwd">Password: <input id="pwd" type="password" placeholder="Password"></label>
-            <label for="username">Username: <input id="username" type="text" placeholder="Username"></label>
-            <input id="submit-btn" type="submit" onsubmit="return">
-        </form>
+            <h2>We'll need some <br> information first</h2>
+            <div class="enter">
+                <input type="text" name="" id="nameInput" placeholder="Full name">
+            </div>
+            <div class="enter">
+                <input type="text" name="" id="userInput" placeholder="Username">
+            </div>
+            <div class="enter">
+                <input type="password" name="" id="pwInput" placeholder="Password">
+            </div>
+            <div class="enter">
+                <input type="password" name="" id="cfInput" placeholder="Confirm Password">
+            </div>
+        
+            <div class="text__web-caption">You can also create an account with</div>
+            <div class="Other">
+                <a href=""><button type="button" class="loginFB"></button></a>
+                <a href=""><button type="button" class="loginGG"></button></a>
+                <a href=""><button type="button" class="loginAP"></button></a>
+            </div>
+            
+            <button id="create">CREATE ACCOUNT</button> <br>
+            <a href="signin.html" class="already">ALREADY HAVE AN ACCOUNT?</a>
     </div>
 
     <script src="./register.js"></script>
