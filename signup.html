@@ -91,19 +91,20 @@
     <div id="register-box">
         <h2>We'll need some <br> information first</h2>
         <div class="enter">
-            <input type="text" name="" id="username" placeholder="Username">
+            <input type="text" name="username" id="username" placeholder="Username"> <br>
+            <span id="username_error"></span>
         </div>
         <div class="enter">
-            <input type="email" name="" id="email" placeholder="Email">
+            <input type="email" name="email" id="email" placeholder="Email">
         </div>
         <div class="enter">
             <input type="password" name="password" id="pwInput" placeholder="Password">
         </div>
         <div class="enter">
-            <input type="password" name="" id="cfInput" placeholder="Confirm Password">
+            <input type="password" name="repassword" id="repassword" placeholder="Confirm Password">
         </div>
 
-        <button id="create" >CREATE ACCOUNT</button> <br>
+        <input type="submit" onclick="return validate();" id="btn" name="btn" value="CREATE ACCOUNT"/><br>
         <a href="signin.html" class="already">ALREADY HAVE AN ACCOUNT?</a>
     </div>
 

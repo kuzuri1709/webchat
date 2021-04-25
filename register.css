@@ -35,7 +35,7 @@ h2{
     margin-top: 30px;
 }
 
-#create{
+#btn{
   background-color: #363fc5;
   border: none;
   color: rgb(255, 255, 255);
@@ -48,7 +48,7 @@ h2{
   margin-top: 60px;
 }
 
-#create:hover {opacity: 1}
+#btn:hover {opacity: 1}
 
 .already{
     font-size: 10px;
