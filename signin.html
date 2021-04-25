@@ -8,23 +8,37 @@
     <link rel="stylesheet" href="login.css">
 </head>
 <body>
-    <div id="login-box">
-        <form id="login-form" action="#">
-            <label for="email">Email: <input id="email" type="email" placeholder="Email"></label>
-            <label for="pwd">Password: <input id="pwd" type="password" placeholder="Password"></label>
-            <input type="submit">
-        </form>
+    <div>
+        <a href=""><img src="LOGOagain.png" alt=""></a>
     </div>
+    
+    
+    <div class="SignIn">
+        <br> 
+        <h2>Sign In</h2>
+        <div class="enter">
+            <input type="text" name="" id="" placeholder="Username">
+        </div>
+        <div class="enter">
+            <input type="password" name="" id="" placeholder="Password">
+        </div>
 
-    <form action="/action_page.php">
-        <label for="other"><button>Male</button></label>
-        <input type="radio" name="gender" id="male" value="male"><br>
-        <label for="male">Female</label>
-        <input type="radio" name="gender" id="female" value="female"><br>
-        <label for="female">Other</label>
-        <input type="radio" name="gender" id="other" value="other"><br><br>
-        <input type="submit" value="Submit">
-      </form>
+        <div class="Other">
+            <a href=""><button type="button" class="loginPN"></button></a>
+            <a href=""><button type="button" class="loginGG"></button></a>
+            <a href=""><button type="button" class="loginAP"></button></a>
+        </div>
+
+        <form action="">
+            <input type="checkbox" name="Stay" id="stay" value="Stay signed in">
+            <label for="Stay" id="stay">Stay signed in</label>
+        </form>
+        
+        <button class="Sign">Sign In</button> <br>
+
+        <a href="" id="Cant">CAN'T SIGN IN?</a> <br>
+        <a href="" id="CreateAcc">CREATE ACCOUNT</a>
+    </div>
 
 
     <script src=".//login.js"></script>
