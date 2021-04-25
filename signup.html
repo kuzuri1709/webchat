@@ -37,11 +37,8 @@
         firebase.initializeApp(firebaseConfig);
         firebase.analytics();
 
+
         function sendUserInfo() {
-            var email
-            var username
-            var password
-            var submit = document.getElementById("submit-btn");
             function User(email, password, username) {
                 this.email = email
                 this.password = password
@@ -49,29 +46,34 @@
             }
             var user
             function getUserInfo() {
-                email = document.getElementById("email").value;
-                username = document.getElementById("username").value;
-                password = document.getElementById("pwInput").value;
+                var email = document.getElementById("email").value;
+                var username = document.getElementById("username").value;
+                var pwInput = document.getElementById("pwInput");
+                var password = pwInput.value;
                 let cfPwd = document.getElementById("cfInput").value;
 
-                if (checkPwd(password) && email != null && username != null && cfPwd === password) {
+                if (checkPwd(pwInput, password) == true && email != null && username != null && cfPwd === password) {
                     return user = new User(email, password, username)
+                } else {
+                    alert("invalid")
+                    console.log(checkPwd(pwInput, password), email, username, password, cfPwd, password.length)
                 }
             }
-            function checkPwd(password) {
-                //Check password
-                password.addEventListener('keyup', function () {
-                    if (password.value.length >= 8) {
-                        //valid
-                        console.log("valid password")
-                        return true;
-                    } else {
-                        //invalid
-                        console.log('invalid password')
-                    }
-                })
-            }
             getUserInfo()
+            function checkPwd(pwInput, password) {
+                //Check password
+
+                if (password.length >= 8) {
+                    //valid
+                    console.log("valid password")
+                    return true;
+                } else {
+                    //invalid
+                    console.log('invalid password')
+                }
+
+            }
+
             //save in database
             firebase.database().ref("users").push().set({
                 "username": user.username,
