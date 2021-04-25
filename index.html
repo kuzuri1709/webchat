@@ -51,8 +51,13 @@
 
     //listen for incoming messages
     firebase.database().ref("messages").on("child_added", function(snapshot){
+      var html ="";
+      html += "<li>";
+      html += snapshot.val().sender + ": " + snapshot.val().message;
+      html += "</li>";
 
-    })
+      document.getElementById("messages").innerHTML += html 
+    });
   }
 </script>
 
@@ -61,7 +66,7 @@
 <input type="submit">
 </form>
 
-
+<ul id="messages"></ul>
 
 <script src="./index.js"></script>
 </body>
