@@ -51,8 +51,25 @@
             function getUserInfo() {
                 email = document.getElementById("email").value;
                 username = document.getElementById("username").value;
-                password = document.getElementById("pwd").value;
-                return user = new User(email, password, username)
+                password = document.getElementById("pwInput").value;
+                let cfPwd = document.getElementById("cfInput").value;
+
+                if (checkPwd(password) && email != null && username != null && cfPwd === password) {
+                    return user = new User(email, password, username)
+                }
+            }
+            function checkPwd(password) {
+                //Check password
+                password.addEventListener('keyup', function () {
+                    if (password.value.length >= 8) {
+                        //valid
+                        console.log("valid password")
+                        return true;
+                    } else {
+                        //invalid
+                        console.log('invalid password')
+                    }
+                })
             }
             getUserInfo()
             //save in database
@@ -70,29 +87,29 @@
     </script>
 
     <div id="register-box">
-            <h2>We'll need some <br> information first</h2>
-            <div class="enter">
-                <input type="text" name="" id="nameInput" placeholder="Full name">
-            </div>
-            <div class="enter">
-                <input type="text" name="" id="userInput" placeholder="Username">
-            </div>
-            <div class="enter">
-                <input type="password" name="" id="pwInput" placeholder="Password">
-            </div>
-            <div class="enter">
-                <input type="password" name="" id="cfInput" placeholder="Confirm Password">
-            </div>
-        
-            <div class="text__web-caption">You can also create an account with</div>
-            <div class="Other">
-                <a href=""><button type="button" class="loginFB"></button></a>
-                <a href=""><button type="button" class="loginGG"></button></a>
-                <a href=""><button type="button" class="loginAP"></button></a>
-            </div>
-            
-            <button id="create">CREATE ACCOUNT</button> <br>
-            <a href="signin.html" class="already">ALREADY HAVE AN ACCOUNT?</a>
+        <h2>We'll need some <br> information first</h2>
+        <div class="enter">
+            <input type="text" name="" id="username" placeholder="Username">
+        </div>
+        <div class="enter">
+            <input type="email" name="" id="email" placeholder="Email">
+        </div>
+        <div class="enter">
+            <input type="password" name="" id="pwInput" placeholder="Password">
+        </div>
+        <div class="enter">
+            <input type="password" name="" id="cfInput" placeholder="Confirm Password">
+        </div>
+
+        <div class="text__web-caption">You can also create an account with</div>
+        <div class="Other">
+            <a href=""><button type="button" class="loginFB"></button></a>
+            <a href=""><button type="button" class="loginGG"></button></a>
+            <a href=""><button type="button" class="loginAP"></button></a>
+        </div>
+
+        <button id="create">CREATE ACCOUNT</button> <br>
+        <a href="signin.html" class="already">ALREADY HAVE AN ACCOUNT?</a>
     </div>
 
     <script src="./register.js"></script>
