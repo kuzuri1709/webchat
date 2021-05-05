@@ -7,6 +7,7 @@ body{
     height: 1000px;
     background: rgba(0, 0, 0, .65) url(https://images.wallpapersden.com/image/download/airplane-minimal-gradient_a2dpbG6UmZqaraWkpJRmbmdlrWZlbWU.jpg);
     background-blend-mode: darken;
+    flex: center;
 }
 
 .note{
@@ -20,15 +21,4 @@ body{
     font-size: 50px;
     letter-spacing: 0.01em;
     line-height: 100%;
-}
-
-
-
-
-.centered{
-    opacity: 1;
-}
-
-input{
-    opacity: 0;
 }
