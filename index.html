@@ -90,17 +90,23 @@
       document.getElementById("messages").innerHTML += html;
     });
 
-    
+
 
     var scrolled = false;
     function updateScroll() {
       if (!scrolled) {
-        var element = document.getElementById("container");
+        var element = document.getElementById("messages");
         element.scrollTop = element.scrollHeight;
       }
+      console.log("hahaha")
     }
+    updateScroll()
 
-    
+    document.getElementById("messages").addEventListener("scroll", function () {
+      sccrolled = true;
+    })
+
+
   </script>
 
   <script src="./index.js"></script>
