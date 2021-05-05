@@ -18,7 +18,9 @@
 
     <div id="chat-section">
 
-      <div id="chat-message"><ul id="messages"></ul></div>
+      <div id="chat-message">
+        <ul id="messages"></ul>
+      </div>
 
       <div id="chat-input">
         <form onsubmit="return sendMessage();">
@@ -30,9 +32,6 @@
     </div>
   </div>
 
-
-
-  
 
   <!-- The core Firebase JS SDK is always required and must be listed first -->
   <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
@@ -90,6 +89,18 @@
 
       document.getElementById("messages").innerHTML += html;
     });
+
+    
+
+    var scrolled = false;
+    function updateScroll() {
+      if (!scrolled) {
+        var element = document.getElementById("container");
+        element.scrollTop = element.scrollHeight;
+      }
+    }
+
+    
   </script>
 
   <script src="./index.js"></script>
