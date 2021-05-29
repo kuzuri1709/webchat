@@ -55,8 +55,8 @@ body{
     padding: 50px;
 }
 
-.create-button {
-  background-color: rgb(33, 12, 53);
+#create-button {
+  background-color: rgb(47, 19, 73);
   border: 3px outset #beb1c7;
   color:  #beb1c7;
   padding: 20px 40px;
@@ -72,20 +72,5 @@ body{
 
 .create-button:hover{
     color: white;
-}
-
-
-.glass {
-    background-color: white;
-}
-
-.glass.down {
-    transform: translateY(100%) translateY(-7rem);
-}
-.glass.down::before {
-    transform: translateY(-100%) translateY(7rem);
-}
-.glass.up, .glass.up::before {
-    transform: translateY(0);
 }
 
