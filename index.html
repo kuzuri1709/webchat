@@ -83,15 +83,13 @@
   <script>
     //listen for incoming messages
     firebase.database().ref("messages").on("child_added", function (snapshot) {
-      console.log("snapshot")
       var html = `<li class="messageBox"> 
       ${snapshot.val().sender}:  ${snapshot.val().message}
       </li>`
 
-      console.log(html);
-
       document.getElementById("messages").innerHTML += html;
       document.getElementById("message").value ="";
+      updateScroll();
     });
 
     
@@ -104,7 +102,6 @@
       }
       console.log("hahaha");
     }
-    updateScroll();
 
     document.getElementById("messages").addEventListener("scroll", function () {
       sccrolled = true;
