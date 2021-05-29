@@ -88,11 +88,13 @@
       html += snapshot.val().sender + ": " + snapshot.val().message;
       html += "</li>";
 
+      console.log(html);
+
       document.getElementById("messages").innerHTML += html;
       document.getElementById("message").value = ""; 
     });
 
-
+    
 
     var scrolled = false;
     function updateScroll() {
