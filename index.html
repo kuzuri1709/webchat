@@ -85,7 +85,7 @@
     firebase.database().ref("messages").on("child_added", function (snapshot) {
       console.log("snapshot")
       var html = `<li class="messageBox"> 
-      ${snapshot.val().sender} + ": " + ${snapshot.val().message}
+      ${snapshot.val().sender}:  ${snapshot.val().message}
       </li>`
 
       console.log(html);
@@ -102,9 +102,9 @@
         var element = document.getElementById("messages");
         element.scrollTop = element.scrollHeight;
       }
-      console.log("hahaha")
+      console.log("hahaha");
     }
-    updateScroll()
+    updateScroll();
 
     document.getElementById("messages").addEventListener("scroll", function () {
       sccrolled = true;
