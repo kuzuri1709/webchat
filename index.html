@@ -84,10 +84,9 @@
     //listen for incoming messages
     firebase.database().ref("messages").on("child_added", function (snapshot) {
       console.log("snapshot")
-      var html = "";
-      html += "<li>";
-      html += snapshot.val().sender + ": " + snapshot.val().message;
-      html += "</li>";
+      var html = `<li class="messageBox"> 
+      ${snapshot.val().sender} + ": " + ${snapshot.val().message}
+      </li>`
 
       console.log(html);
 

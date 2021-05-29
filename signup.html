@@ -12,13 +12,17 @@
 <body>
 
     <div id="overlay">
-        <img id="background" src="https://images.wallpapersden.com/image/download/airplane-minimal-gradient_a2dpbG6UmZqaraWkpJRmbmdlrWZlbWU.jpg" alt="">
+        <img id="background"
+            src="https://images.wallpapersden.com/image/download/airplane-minimal-gradient_a2dpbG6UmZqaraWkpJRmbmdlrWZlbWU.jpg"
+            alt="">
         <div id="header"></div>
         <div id="content">
             <p class="note">CREATE A USERNAME AND PASSWORD</p>
-            <img id="cool" src="https://lolstatic-a.akamaihd.net/frontpage/apps/prod/signup/en_US/03a5e95dd434e72e5746eae1ee22f0b440c81c79/assets/en_US/assets/divider.png" alt="divide">
+            <img id="cool"
+                src="https://lolstatic-a.akamaihd.net/frontpage/apps/prod/signup/en_US/03a5e95dd434e72e5746eae1ee22f0b440c81c79/assets/en_US/assets/divider.png"
+                alt="divide">
             <div class="input-component">
-                <input id="email"  class="input" type="email" name="email" placeholder="EMAIL">
+                <input id="email" class="input" type="email" name="email" placeholder="EMAIL">
             </div>
             <div class="input-component">
                 <input id="username" class="input" type="text" name="username" placeholder="USERNAME">
@@ -27,34 +31,37 @@
                 <input id="pwInput" class="input" type="password" name="password" placeholder="PASSWORD">
             </div>
             <div class="input-component">
-                <input id="cfInput" class="input" type="password" name="confirm_password" placeholder="CONFIRM PASSWORD">
+                <input id="cfInput" class="input" type="password" name="confirm_password"
+                    placeholder="CONFIRM PASSWORD">
             </div>
             <button id="create-button">CREATE ACCOUNT</button>
         </div>
     </div>
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
 
-<script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-database.js"></script>
 
-<!-- TODO: Add SDKs for Firebase products that you want to use
+    <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
-<script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-analytics.js"></script>
 
-<script>
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  var firebaseConfig = {
-    apiKey: "AIzaSyCOsWXmgZ7QmekmbFKNB7et6QbSoXfiQqs",
-    authDomain: "webchat-44928.firebaseapp.com",
-    databaseURL: "https://webchat-44928-default-rtdb.firebaseio.com",
-    projectId: "webchat-44928",
-    storageBucket: "webchat-44928.appspot.com",
-    messagingSenderId: "58587984553",
-    appId: "1:58587984553:web:febf003ccfd6807f0d6fb8",
-    measurementId: "G-8NE9M7G87B"
-  };
+    <script>FirebaseAuth.getInstance().useEmulator('10.0.2.2', 9099);</script>
+
+    <script>
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        var firebaseConfig = {
+            apiKey: "AIzaSyCOsWXmgZ7QmekmbFKNB7et6QbSoXfiQqs",
+            authDomain: "webchat-44928.firebaseapp.com",
+            databaseURL: "https://webchat-44928-default-rtdb.firebaseio.com",
+            projectId: "webchat-44928",
+            storageBucket: "webchat-44928.appspot.com",
+            messagingSenderId: "58587984553",
+            appId: "1:58587984553:web:febf003ccfd6807f0d6fb8",
+            measurementId: "G-8NE9M7G87B"
+        };
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
         firebase.analytics();
@@ -75,7 +82,18 @@
                 let cfPwd = document.getElementById("cfInput").value;
 
                 if (checkPwd(pwInput, password) == true && email != null && username != null && cfPwd === password) {
-                    return user = new User(email, password, username)
+                    firebase.auth().createUserWithEmailAndPassword(email, password)
+                        .then((userCredential) => {
+                            // Signed in 
+                            var user = userCredential.user;
+                            // ...
+                            console.log(user);
+                        })
+                        .catch((error) => {
+                            var errorCode = error.code;
+                            var errorMessage = error.message;
+                            // ..
+                        });
                 } else {
                     alert("invalid")
                     console.log(checkPwd(pwInput, password), email, username, password, cfPwd, password.length)
@@ -112,10 +130,10 @@
 
 
     <script>
-var btnCreate = document.getElementById("create-button");
-btnCreate.addEventListener("click", function(){
-    sendUserInfo();
-})
+        var btnCreate = document.getElementById("create-button");
+        btnCreate.addEventListener("click", function () {
+            sendUserInfo();
+        })
     </script>
 
 
