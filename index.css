@@ -14,13 +14,13 @@ body{
 #list-section{
     height: 100vh;
     width: 30%;
-    border-right: 1px solid gray;
+    border-right: 1px solid rgb(211, 211, 211);
 }
 
 #searchbox{
     height: 40px;
     width: 95%;
-    background-color: rgb(179, 178, 178);
+    background-color: rgb(236, 235, 235);
     border-radius: 50px;
 }
 
@@ -34,16 +34,21 @@ body{
     width: 100%;
     position: fixed;
     bottom: 0px;
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     display: flex;
     flex-direction: column;
     justify-content: center;
     border: 1px solid gray
 }
 
+ul.space_list li { margin-bottom: 1em; }
+
 #messages{
     position: relative;
     padding-bottom: 45px;
+    list-style-type: none;
+    border: blue;
+    
 }
 
 #message{
@@ -53,4 +58,9 @@ body{
 #chat-message{
     height: 100%;
     width: 100%;
+}
+
+#chat{
+    border-radius: 50px;
+    background-color: rgb(28, 95, 182);
 }
