@@ -55,7 +55,8 @@ ul.space_list li { margin-bottom: 1em; }
 
 .messageBox{
     background-color: lightblue;
-
+    border-radius: 20px;
+    padding: 2px 8px 2px 8px;
 }
 
 #chat-message{
