@@ -44,3 +44,17 @@ db.collection('users').get().then((snapshot) => {
 });
 
 //saving data
+const form = document.getElementById('content');
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    db.collection('users').add({
+        email: form.email.value,
+        username: form.username.value,
+        password: form.password.value
+    })
+
+    form.email.value = '';
+    form.username.value = '';
+    form.password.value = '';
+    form.confirm_password.value = '';
+});
