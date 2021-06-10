@@ -5,8 +5,18 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>App</title>
   <link rel="stylesheet" href="./index.css">
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+
+  <!-- include firebase database -->
+  <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-database.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+       https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-analytics.js"></script>
 </head>
 
 <body>
@@ -19,9 +29,9 @@
     <div id="chat-section">
 
       <div id="chat-message">
-          <ul class="space_list">
-            <li id="messages"></li>
-          </ul>
+        <ul class="space_list">
+          <li id="messages"></li>
+        </ul>
       </div>
 
       <div id="chat-input">
@@ -35,15 +45,7 @@
   </div>
 
 
-  <!-- The core Firebase JS SDK is always required and must be listed first -->
-  <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
 
-  <!-- include firebase database -->
-  <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-database.js"></script>
-
-  <!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-  <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-analytics.js"></script>
 
   <script>
     // Your web app's Firebase configuration
@@ -60,54 +62,6 @@
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
     firebase.analytics();
-
-    var myName = prompt("Enter your name");
-    function sendMessage() {
-
-      //get message
-      var message = document.getElementById("message").value;
-
-      //save in database
-      firebase.database().ref("messages").push().set({
-        "sender": myName,
-        "message": message,
-      });
-
-      //prevent form from submitting
-      return false;
-
-
-    }
-  </script>
-
-  <script>
-    //listen for incoming messages
-    firebase.database().ref("messages").on("child_added", function (snapshot) {
-      var html = `<li class="messageBox"> 
-      ${snapshot.val().sender}:  ${snapshot.val().message}
-      </li>`
-
-      document.getElementById("messages").innerHTML += html;
-      document.getElementById("message").value ="";
-      updateScroll();
-    });
-
-    
-
-    var scrolled = false;
-    function updateScroll() {
-      if (!scrolled) {
-        var element = document.getElementById("messages");
-        element.scrollTop = element.scrollHeight;
-      }
-      console.log("hahaha");
-    }
-
-    document.getElementById("messages").addEventListener("scroll", function () {
-      sccrolled = true;
-    })
-
-
   </script>
 
   <script src="./index.js"></script>
