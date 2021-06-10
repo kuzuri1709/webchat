@@ -16,9 +16,9 @@ function sendMessage() {
 
 //listen for incoming messages
 firebase.database().ref("messages").on("child_added", function (snapshot) {
-    var html = `<li class="messageBox"> 
+    var html = `<div class = "chatRow"><p class="messageBox"> 
       ${snapshot.val().sender}:  ${snapshot.val().message}
-      </li>`
+      </p></div>`
 
     document.getElementById("messages").innerHTML += html;
     document.getElementById("message").value = "";

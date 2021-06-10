@@ -13,8 +13,8 @@ body{
 
 #list-section{
     height: 100vh;
-    width: 30%;
-    border-right: 1px solid rgb(211, 211, 211);
+    width: 20%;
+    
 }
 
 #searchbox{
@@ -26,9 +26,10 @@ body{
 
 #chat-section{
     height: 100%;
-    width: 70%;
+    width: 80%;
     display: flex;
     flex-direction: column;
+    border-left: 1px solid rgb(211, 211, 211);
 }
 
 #chat-input{
@@ -53,10 +54,20 @@ ul.space_list li { margin-bottom: 1em; }
     
 }
 
+.chatRow{
+    display: block;
+    padding: 2px 8px 2px 8px;
+    width: 100%;
+    position: relative;
+}
+
 .messageBox{
     background-color: lightblue;
     border-radius: 20px;
     padding: 2px 8px 2px 8px;
+    max-width: 500px !important;
+    display: inline-block;
+    word-wrap: break-word;
 }
 
 #chat-message{
