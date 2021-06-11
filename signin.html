@@ -67,19 +67,9 @@
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
         firebase.analytics();
-    </script>
 
-    <script>
-        let btnSignIn = document.getElementById("Sign");
-        btnSignIn.addEventListener("click", function () {
-            let username = document.getElementById("username").value;
-            let pwd = document.getElementById("pwd").value;
-
-
-        });
-
-
-
+        const db = firebase.firestore();
+        db.settings({ timestampsInSnapshots: true });
     </script>
 
     <script src="./login.js"></script>

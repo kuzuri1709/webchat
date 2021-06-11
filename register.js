@@ -58,3 +58,9 @@ form.addEventListener('submit', (e) => {
     form.password.value = '';
     form.confirm_password.value = '';
 });
+
+const chatroom =firebase.database().ref("chatrooms")
+chatrooms.push().set({
+    "id": 1,
+    "messages":[]
+})
