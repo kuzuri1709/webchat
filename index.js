@@ -42,7 +42,8 @@ firebase.database().ref("messages").on("child_added", function (snapshot) {
     // updateScroll();
 });
 
-function sendMessageWithId(chat_room_id, message){
+var chat_room_id;
+function sendMessageWithId(chat_room_id, message) {
     let today = new Date();
 
     if (message != "") {
@@ -54,7 +55,22 @@ function sendMessageWithId(chat_room_id, message){
     }
 }
 
-sendMessageWithId("BC", "this is test 1")
+var usersList = document.getElementById("users_field");
+firebase.database().ref("users").on("child_added", function (snapshot) {
+    var html = `<div class = "user_box" id = "${snapshot.key}">
+    ${snapshot.val().username}</div>`
+
+    usersList.innerHTML += html;
+
+    var list = document.getElementsByClassName("user_box");
+    for (let i = 0; i < list.length; i++) {
+        list[i].addEventListener('click', () => {
+            chat_room_id = list[i].id + "a";
+            console.log(chat_room_id);
+        })
+    }
+});
+
 
 
 // {

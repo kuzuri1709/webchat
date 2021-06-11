@@ -24,6 +24,11 @@ body{
     border-radius: 50px;
 }
 
+#users_list
+{
+    width: 100%;
+}
+
 #chat-section{
     height: 100%;
     width: 80%;
