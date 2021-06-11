@@ -42,24 +42,24 @@ firebase.database().ref("messages").on("child_added", function (snapshot) {
     // updateScroll();
 });
 
+function sendMessageWithId(chat_room_id, message){
+    let today = new Date();
+
+    if (message != "") {
+        firebase.database().ref("ChatRoom/" + chat_room_id).push().set({
+            "sender": "hiep_tv",
+            "message": message,
+            "time": today.getTime()
+        });
+    }
+}
+
+sendMessageWithId("BC", "this is test 1")
 
 
-// var scrolled = false;
-// function updateScroll() {
-//     if (!scrolled) {
-//         var element = document.getElementById("messages");
-//         element.scrollTop = element.scrollHeight;
-//     }
-//     console.log("hahaha");
+// {
+//     id,
+//     username,
+//     password,
+//     status: ON/OFF
 // }
-
-// document.getElementById("messages").addEventListener("scroll", function () {
-//     sccrolled = true;
-// })
-
-// const chatroom =firebase.database().ref("chatrooms")
-// chatrooms.push().set({
-//     "id": 1,
-//     "messages":[]
-// })
-
