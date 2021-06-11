@@ -1,4 +1,8 @@
-var myName = prompt("Enter your name");
+var retrievedUser = JSON.parse(localStorage.getItem("user"))
+// console.log(retrievedUser);
+localStorage.removeItem("user");
+
+var myName = retrievedUser.username;
 for (let i = 0; i = 1;) {
     if (myName == "") {
         myName = prompt("Enter your name");
@@ -70,9 +74,6 @@ firebase.database().ref("users").on("child_added", function (snapshot) {
         })
     }
 });
-
-
-
 // {
 //     id,
 //     username,
