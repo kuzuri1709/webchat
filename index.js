@@ -1,4 +1,14 @@
 var myName = prompt("Enter your name");
+for (let i = 0; i = 1;) {
+    if (myName == "") {
+        myName = prompt("Enter your name");
+    } else {
+        i++;
+        break;
+    }
+}
+
+
 function sendMessage() {
     //get message
     var message = document.getElementById("message").value;
@@ -52,3 +62,4 @@ firebase.database().ref("messages").on("child_added", function (snapshot) {
 //     "id": 1,
 //     "messages":[]
 // })
+
