@@ -17,7 +17,18 @@ all_users.get().then((snapshot) => {
                 document.getElementById("messages").innerHTML = "";
                 chat_room_id = list[i].id + retrievedId;
                 console.log(chat_room_id);
-                showMessages(chat_room_id);
+                // showMessages(chat_room_id);
+
+                firebase.database().ref("ChatRoom/" + chat_room_id).on("child_added", function (snapshot) {
+
+                    var html = `<div class = "chatRow"><p class="messageBox"> 
+                        ${snapshot.val().sender}:  ${snapshot.val().message}
+                        </p> <span class = "time">${snapshot.val().time}</span></div>`;
+
+                    document.getElementById("messages").innerHTML += html;
+                    document.getElementById("message").value = "";
+                    // updateScroll();
+                });
 
                 // console.log(chat_room_id);
                 // sendMessageWithId(chat_room_id, message);
@@ -46,27 +57,27 @@ var myName = retrievedUser.username;
 // }
 
 
-function sendMessage() {
-    //get message
-    var message = document.getElementById("message").value;
-    var today = new Date();
-    var date = today.getDate() + '-' + (today.getMonth() + 1) + '-' + today.getFullYear();
-    var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-    var dateTime = date + ' ' + time;
+// function sendMessage() {
+//     //get message
+//     var message = document.getElementById("message").value;
+//     var today = new Date();
+//     var date = today.getDate() + '-' + (today.getMonth() + 1) + '-' + today.getFullYear();
+//     var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+//     var dateTime = date + ' ' + time;
 
-    //save in database
-    if (message != "") {
-        firebase.database().ref("messages").push().set({
-            "sender": myName,
-            "message": message,
-            "time": dateTime
-        });
-    }
+//     //save in database
+//     if (message != "") {
+//         firebase.database().ref("messages").push().set({
+//             "sender": myName,
+//             "message": message,
+//             "time": dateTime
+//         });
+//     }
 
 
-    //prevent form from submitting
-    return false;
-}
+//     //prevent form from submitting
+//     return false;
+// }
 
 //listen for incoming messages
 // firebase.database().ref("messages").on("child_added", function (snapshot) {
@@ -109,18 +120,9 @@ var usersList = document.getElementById("users_field");
 
 // });
 
-function showMessages(chat_room_id) {
-    firebase.database().ref("ChatRoom/" + chat_room_id).on("child_added", function (snapshot) {
+// function showMessages(chat_room_id) {
 
-        var html = `<div class = "chatRow"><p class="messageBox"> 
-      ${snapshot.val().sender}:  ${snapshot.val().message}
-      </p> <span class = "time">${snapshot.val().time}</span></div>`
-
-        document.getElementById("messages").innerHTML += html;
-        document.getElementById("message").value = "";
-        // updateScroll();
-    });
-}
+// }
 
 
 // {
