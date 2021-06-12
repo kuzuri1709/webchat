@@ -1,6 +1,34 @@
 var retrievedUser = JSON.parse(localStorage.getItem("user"));
 var retrievedId = localStorage.getItem("userId");
+
+var all_users = db.collection("users");
+var chat_room_id;
+all_users.get().then((snapshot) => {
+    snapshot.docs.forEach(doc => {
+        // console.log(doc.data());
+        var html = `<div class = "user_box" id = "${doc.id}">
+    ${doc.data().username}</div>`
+
+        usersList.innerHTML += html;
+
+        var list = document.getElementsByClassName("user_box");
+        for (let i = 0; i < list.length; i++) {
+            list[i].addEventListener('click', () => {
+                document.getElementById("messages").innerHTML = "";
+                chat_room_id = list[i].id + retrievedId;
+                console.log(chat_room_id);
+                showMessages(chat_room_id);
+
+                // console.log(chat_room_id);
+                // sendMessageWithId(chat_room_id, message);
+            })
+        }
+    })
+});
+
+
 // console.log(retrievedUser);
+// console.log(retrievedId);
 // console.log(localStorage.getItem("user"));
 // console.log(localStorage.getItem("userId"));
 
@@ -51,9 +79,9 @@ function sendMessage() {
 //     // updateScroll();
 // });
 
-var chat_room_id;
+
 function sendMessageWithId(chat_room_id, message) {
-    
+
     var message = document.getElementById("message").value;
     var today = new Date();
     var date = today.getDate() + '-' + (today.getMonth() + 1) + '-' + today.getFullYear();
@@ -72,31 +100,29 @@ function sendMessageWithId(chat_room_id, message) {
 }
 
 var usersList = document.getElementById("users_field");
-firebase.database().ref("users").on("child_added", function (snapshot) {
-    var html = `<div class = "user_box" id = "${snapshot.key}">
-    ${snapshot.val().username}</div>`
+// firebase.database().ref("users").on("child_added", function (snapshot) {
+//     // var html = `<div class = "user_box" id = "${snapshot.key}">
+//     // ${snapshot.val().username}</div>`
 
-    usersList.innerHTML += html;
+//     // usersList.innerHTML += html;
 
-    var list = document.getElementsByClassName("user_box");
-    for (let i = 0; i < list.length; i++) {
-        list[i].addEventListener('click', () => {
-            chat_room_id = list[i].id + retrievedId;
-            // console.log(chat_room_id);
-            // sendMessageWithId(chat_room_id, message);
-        })
-    }
-});
 
-firebase.database().ref("ChatRoom/" + chat_room_id).on("child_added", function (snapshot) {
-    var html = `<div class = "chatRow"><p class="messageBox"> 
+// });
+
+function showMessages(chat_room_id) {
+    firebase.database().ref("ChatRoom/" + chat_room_id).on("child_added", function (snapshot) {
+
+        var html = `<div class = "chatRow"><p class="messageBox"> 
       ${snapshot.val().sender}:  ${snapshot.val().message}
       </p> <span class = "time">${snapshot.val().time}</span></div>`
 
-    document.getElementById("messages").innerHTML += html;
-    document.getElementById("message").value = "";
-    // updateScroll();
-});
+        document.getElementById("messages").innerHTML += html;
+        document.getElementById("message").value = "";
+        // updateScroll();
+    });
+}
+
+
 // {
 //     id,
 //     username,
