@@ -37,11 +37,11 @@
 // })
 
 //getting data from database
-db.collection('users').get().then((snapshot) => {
-    snapshot.docs.forEach(doc => {
-        console.log(doc.data());
-    })
-});
+// db.collection('users').get().then((snapshot) => {
+//     snapshot.docs.forEach(doc => {
+//         console.log(doc.data());
+//     })
+// });
 
 //saving data
 const form = document.getElementById('content');
@@ -59,8 +59,8 @@ form.addEventListener('submit', (e) => {
     form.confirm_password.value = '';
 });
 
-const chatroom =firebase.database().ref("chatrooms")
-chatrooms.push().set({
-    "id": 1,
-    "messages":[]
-})
+// const chatroom =firebase.database().ref("chatrooms")
+// chatrooms.push().set({
+//     "id": 1,
+//     "messages":[]
+// })
