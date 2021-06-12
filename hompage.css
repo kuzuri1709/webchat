@@ -158,10 +158,27 @@ body{
   margin-left: 20px;
   }
   
-  
   svg{
   margin-left: 5px;
   }
-  
 
-  
+
+  .content{
+    height: 600px;
+    width: 100%;
+    overflow: hidden;
+    box-shadow: 1px 1px 15px rgba(0,0,0,0.4);
+    
+  }
+  .content .images{
+    height: 600px;
+    width: 1000px;
+    padding-left: 280px;
+    
+  }
+
+  .images img{
+    height: 100%;
+    width: 100%;
+  }
+ 
